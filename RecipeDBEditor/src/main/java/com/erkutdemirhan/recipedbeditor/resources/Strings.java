@@ -1,4 +1,4 @@
-package com.recipedbeditor.resources;
+package com.erkutdemirhan.recipedbeditor.resources;
 
 public enum Strings {
 	ERROR_MSG_INGREDIENT_NONAME("The ingredient has no name!"), 

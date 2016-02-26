@@ -1,4 +1,4 @@
-package com.recipedbeditor.domain;
+package com.erkutdemirhan.recipedbeditor.domain;
 
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
@@ -9,8 +9,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import com.recipedbeditor.domain.exception.IllegalInputException;
-import com.recipedbeditor.resources.Strings;
+import com.erkutdemirhan.recipedbeditor.domain.Ingredient;
+import com.erkutdemirhan.recipedbeditor.domain.exception.IllegalInputException;
+import com.erkutdemirhan.recipedbeditor.resources.Strings;
 
 public class IngredientTest {
 	
@@ -63,7 +64,7 @@ public class IngredientTest {
 	
 	@Test
 	public void IngredientName_ShouldBe_Set_2() throws IllegalInputException {
-		Ingredient ingredient = new Ingredient("üzüm yağı", null);
+		Ingredient ingredient = new Ingredient("Üzüm yağı", null);
 		String expected = "Üzüm yağı";
 		assertThat(ingredient.getName(), equalTo(expected));
 	}
@@ -78,14 +79,14 @@ public class IngredientTest {
 	@Test 
 	public void Ingredients_With_Different_Names_ShouldBe_Different() throws IllegalInputException {
 		Ingredient ingredient1 = new Ingredient(" Do ma tes Salçası", null);
-		Ingredient ingredient2 = new Ingredient("   DOM a tes  salçası", null);
+		Ingredient ingredient2 = new Ingredient("   DOM a tes  salÇAsı", null);
 		assertThat(ingredient1, not(equalTo(ingredient2)));
 	}
 	
 	@Test
 	public void Ingredients_With_Same_Names_ShouldBe_Equal() throws IllegalInputException {
-		Ingredient ingredient1 = new Ingredient("   domates salçası", null);
-		Ingredient ingredient2 = new Ingredient(" Domates   SalÇası ", null);
+		Ingredient ingredient1 = new Ingredient(" domates    SalÇası", null);
+		Ingredient ingredient2 = new Ingredient(" Domates   SalçAsı ", null);
 		assertThat(ingredient1, equalTo(ingredient2));
 	}
 	
@@ -100,7 +101,7 @@ public class IngredientTest {
 	public void Amount_ShouldBe_AlphaNumeric() throws IllegalInputException {
 		thrown.expect(IllegalInputException.class);
 		thrown.expectMessage(Strings.ERROR_MSG_INGREDIENT_ILLEGALAMOUNT.toString());
-		Ingredient ingredient = new Ingredient("Ingr name", "\n 3 Ç@y kaşığı");
+		Ingredient ingredient = new Ingredient("Ingr name", "\n 3 Çay k@şığı");
 	}
 	
 	@Test 
@@ -112,8 +113,8 @@ public class IngredientTest {
 	
 	@Test 
 	public void Amount_ShouldBe_Set_2() throws IllegalInputException {
-		Ingredient ingredient = new Ingredient("Ingr name", " 3 çay kaşığı  ");
-		String expectedAmount = "3 çay kaşığı";
+		Ingredient ingredient = new Ingredient("Ingr name", " 3 Çay kaşığı  ");
+		String expectedAmount = "3 Çay kaşığı";
 		assertThat(ingredient.getAmount(), equalTo(expectedAmount));
 	}
 }

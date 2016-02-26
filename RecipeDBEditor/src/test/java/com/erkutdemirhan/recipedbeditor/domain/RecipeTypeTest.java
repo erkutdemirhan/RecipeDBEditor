@@ -1,4 +1,4 @@
-package com.recipedbeditor.domain;
+package com.erkutdemirhan.recipedbeditor.domain;
 
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
@@ -9,8 +9,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import com.recipedbeditor.domain.exception.IllegalInputException;
-import com.recipedbeditor.resources.Strings;
+import com.erkutdemirhan.recipedbeditor.domain.RecipeType;
+import com.erkutdemirhan.recipedbeditor.domain.exception.IllegalInputException;
+import com.erkutdemirhan.recipedbeditor.resources.Strings;
 
 public class RecipeTypeTest {
 
@@ -43,7 +44,7 @@ public class RecipeTypeTest {
 	public void RecipeTypeName_ShouldContain_Only_LettersAndSpaces() throws IllegalInputException {
 		thrown.expect(IllegalInputException.class);
 		thrown.expectMessage(Strings.ERROR_MSG_RECIPETYPE_ILLEGALNAME.toString());
-		RecipeType recipeType = new RecipeType("  Ç0rbalar");
+		RecipeType recipeType = new RecipeType("  Çorb@alar");
 	}
 	
 	@Test
@@ -55,7 +56,7 @@ public class RecipeTypeTest {
 	
 	@Test
 	public void RecipeTypeName_ShouldBe_Set_1() throws IllegalInputException {
-		RecipeType recipeType = new RecipeType("   çorbAlaR ");
+		RecipeType recipeType = new RecipeType("   çorbalar ");
 		String expected       = "Çorbalar";
 		assertThat(recipeType.getName(), equalTo(expected));
 	}
@@ -69,8 +70,8 @@ public class RecipeTypeTest {
 	
 	@Test
 	public void RecipeTypes_With_Same_Name_ShouldBe_Equal() throws IllegalInputException {
-		RecipeType type1 = new RecipeType("  çorbalAr");
-		RecipeType type2 = new RecipeType("ÇOrbalar  ");
+		RecipeType type1 = new RecipeType("  Çorbalar");
+		RecipeType type2 = new RecipeType("Çorbalar  ");
 		assertThat(type1, equalTo(type2));
 	}
 	

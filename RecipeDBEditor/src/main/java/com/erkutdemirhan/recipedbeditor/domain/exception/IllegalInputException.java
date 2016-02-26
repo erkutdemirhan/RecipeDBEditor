@@ -1,4 +1,4 @@
-package com.recipedbeditor.domain.exception;
+package com.erkutdemirhan.recipedbeditor.domain.exception;
 
 public class IllegalInputException extends Exception {
 

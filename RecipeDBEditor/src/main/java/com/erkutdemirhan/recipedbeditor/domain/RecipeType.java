@@ -1,7 +1,7 @@
-package com.recipedbeditor.domain;
+package com.erkutdemirhan.recipedbeditor.domain;
 
-import com.recipedbeditor.domain.exception.IllegalInputException;
-import com.recipedbeditor.resources.Strings;
+import com.erkutdemirhan.recipedbeditor.domain.exception.IllegalInputException;
+import com.erkutdemirhan.recipedbeditor.resources.Strings;
 
 public class RecipeType {
 
